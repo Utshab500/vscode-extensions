@@ -20,6 +20,10 @@
       {
         "command": "run-docker.run",
         "title": "Run Shell Command"
+      },
+      {
+        "command": "run-docker.list-containers",
+        "title": "List Docker Containers"
       }
     ]
   },

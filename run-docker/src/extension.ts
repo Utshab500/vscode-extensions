@@ -29,7 +29,23 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		  
 			// the *entire* stdout and stderr (buffered)
-			vscode.window.showInformationMessage(`${stdout}`);
+			// vscode.window.showInformationMessage(`${stdout}`);
+			console.log(`stdout: ${stdout}`);
+			console.log(`stderr: ${stderr}`);
+		  });
+	});
+	let listContainers = vscode.commands.registerCommand('run-docker.list-containers', () => {
+		// The code you place here will be executed every time your command is executed
+		// Display a message box to the user
+		exec('docker ps -a', (err, stdout, stderr) => {
+			if (err) {
+			  // node couldn't execute the command
+			  return;
+			}
+		  
+			// vscode.window.createOutputChannel('log', 'languageID');
+			// vscode.window.createOutputChannel('log', {log: true});
+			vscode.window.createTerminal();
 			console.log(`stdout: ${stdout}`);
 			console.log(`stderr: ${stderr}`);
 		  });
